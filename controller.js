@@ -12,6 +12,20 @@ module.exports = http.createServer((req, res) => {
             reqUrl.pathname);
 
         service.sampleRequest(req, res);
+    
+    //POST Endpoint
+    } else if (reqUrl.pathname === '/test' && req.method === 'POST'){
+        console.log('Request Type:' +
+            req.method + ' Endpoint: ' +
+            reqUrl.pathname);
 
-    } 
+        service.testRequest(req, res);
+    
+    } else {
+        console.log('Request Type:' +
+            req.method + ' Invalid Endpoint: ' +
+            reqUrl.pathname);
+        
+        service.invalidRequest(req, res);
+    }
 });
